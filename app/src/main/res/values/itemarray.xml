@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gridview_icon_text">
+        <item>子页面</item>
+        <item>发送事件</item>
+        <item>发送监控</item>
+        <item>调用trace</item>
+        <item>流量测试</item>
+        <item>Map</item>
+        <item>CallNumber</item>
+        <item>携程网站1</item>
+        <item>携程网站2</item>
+        <item>携程网站3</item>
+        <item>携程网站4</item>
+        <item>携程网站5</item>
+
+    </string-array>
+</resources>

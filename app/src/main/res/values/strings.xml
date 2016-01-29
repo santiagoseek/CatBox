@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CatBox</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_grid_ui">GridUIActivity</string>
+    <string name="title_activity_how_old">HowOldActivity</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
+</resources>
