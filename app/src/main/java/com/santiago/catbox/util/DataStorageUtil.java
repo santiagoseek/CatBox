@@ -9,6 +9,7 @@ import com.santiago.catbox.common.Constant;
 
 /**
  * Created by test on 16/2/1.
+ * http://www.android-doc.com/reference/android/os/Environment.html
  */
 public class DataStorageUtil {
 	private static final String tag = Constant.TAG + "-" + DataStorageUtil.class.getSimpleName();
