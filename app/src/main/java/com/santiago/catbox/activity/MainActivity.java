@@ -36,8 +36,10 @@ import com.santiago.catbox.NDK.TestNDK;
 import com.santiago.catbox.R;
 import com.santiago.catbox.common.Constant;
 import com.santiago.catbox.util.ConnectionIPWeight;
+import com.santiago.catbox.util.DataStorageUtil;
 import com.santiago.catbox.util.NetworkUtil;
 import com.santiago.catbox.util.SystemInfo;
+import com.santiago.catbox.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,6 +125,11 @@ public class MainActivity extends AppCompatActivity {
 					}
 					case 7: {
 						showNotification("Test","This is Testing for Notification.");
+						break;
+					}
+					case 8: { //StorageTest
+						ToastUtil.showToast(context, DataStorageUtil.getInternalFilePath(context),Toast.LENGTH_LONG);
+						ToastUtil.showToast(context, DataStorageUtil.getExternalStoragePath(context),Toast.LENGTH_LONG);
 						break;
 					}
 				}
@@ -244,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
 			items.add("NDK");
 			items.add("WebView");//6
 			items.add("showNotification");
-			items.add("SendTrace");
+			items.add("StorageTest");
 			items.add("test");
 			items.add("DisplayInfo");
 			items.add("MultiProcessServiceStart");//11
