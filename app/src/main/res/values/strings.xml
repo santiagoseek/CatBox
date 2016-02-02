@@ -6,4 +6,6 @@
     <string name="title_activity_grid_ui">GridUIActivity</string>
     <string name="title_activity_how_old">HowOldActivity</string>
     <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="title_activity_qrcode">QRCodeActivity</string>
+    <string name="title_activity_qrcapture">QRCaptureActivity</string>
 </resources>

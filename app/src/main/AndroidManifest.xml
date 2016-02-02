@@ -44,6 +44,14 @@
             android:name=".activity.WebViewActivity"
             android:label="@string/title_activity_web_view" >
         </activity>
+        <activity
+            android:name=".activity.QRCodeActivity"
+            android:label="@string/title_activity_qrcode" >
+        </activity>
+        <activity
+            android:name=".activity.QRCaptureActivity"
+            android:label="@string/title_activity_qrcapture" >
+        </activity>
     </application>
 
 </manifest>

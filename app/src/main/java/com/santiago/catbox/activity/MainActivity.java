@@ -132,6 +132,10 @@ public class MainActivity extends AppCompatActivity {
 						ToastUtil.showToast(context, DataStorageUtil.getExternalStoragePath(context),Toast.LENGTH_LONG);
 						break;
 					}
+					case 9: { //QRCode
+						MainActivity.this.startActivity(new Intent(MainActivity.this,QRCodeActivity.class));
+						break;
+					}
 				}
 			}
 		});
@@ -252,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
 			items.add("WebView");//6
 			items.add("showNotification");
 			items.add("StorageTest");
-			items.add("test");
+			items.add("QRCode");
 			items.add("DisplayInfo");
 			items.add("MultiProcessServiceStart");//11
 			items.add("ServiceStop");
