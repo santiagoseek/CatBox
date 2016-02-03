@@ -8,4 +8,5 @@
     <string name="title_activity_web_view">WebViewActivity</string>
     <string name="title_activity_qrcode">QRCodeActivity</string>
     <string name="title_activity_qrcapture">QRCaptureActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>

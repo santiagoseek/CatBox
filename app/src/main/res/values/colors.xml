@@ -28,5 +28,9 @@
   <color name="viewfinder_mask">#60000000</color>
   <color name="header">#58567D</color>
   <color name="grgray">#686868</color>
+
+  <color name="blueviolet">#8A2BE2</color><!--紫罗兰蓝色 -->
+  <color name="lightskyblue">#87CEFA</color><!--亮天蓝色 -->
+  <color name="skyblue">#87CEEB</color><!--天蓝色 -->
       
 </resources>
