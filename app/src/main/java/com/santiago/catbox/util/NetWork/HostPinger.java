@@ -1,4 +1,4 @@
-package com.santiago.catbox.util;
+package com.santiago.catbox.util.NetWork;
 
 import android.util.Log;
 

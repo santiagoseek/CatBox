@@ -35,9 +35,9 @@ import android.widget.Toast;
 import com.santiago.catbox.NDK.TestNDK;
 import com.santiago.catbox.R;
 import com.santiago.catbox.common.Constant;
-import com.santiago.catbox.util.ConnectionIPWeight;
+import com.santiago.catbox.util.NetWork.ConnectionIPWeight;
 import com.santiago.catbox.util.DataStorageUtil;
-import com.santiago.catbox.util.NetworkUtil;
+import com.santiago.catbox.util.NetWork.NetworkUtil;
 import com.santiago.catbox.util.SystemInfo;
 import com.santiago.catbox.util.ToastUtil;
 

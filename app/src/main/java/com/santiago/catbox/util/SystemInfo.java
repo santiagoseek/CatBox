@@ -12,6 +12,8 @@ import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import com.santiago.catbox.common.Constant;
+import com.santiago.catbox.util.NetWork.CDNCheck;
+import com.santiago.catbox.util.NetWork.NetworkUtil;
 
 import java.util.HashMap;
 import java.util.Locale;

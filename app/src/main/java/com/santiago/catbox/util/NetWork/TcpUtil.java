@@ -1,4 +1,4 @@
-package com.santiago.catbox.util;
+package com.santiago.catbox.util.NetWork;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

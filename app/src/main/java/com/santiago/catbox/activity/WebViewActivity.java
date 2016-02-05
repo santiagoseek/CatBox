@@ -12,7 +12,7 @@ import android.view.View;
 
 import com.santiago.catbox.R;
 import com.santiago.catbox.common.Constant;
-import com.santiago.catbox.util.DownloadFile;
+import com.santiago.catbox.util.NetWork.DownloadFile;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;

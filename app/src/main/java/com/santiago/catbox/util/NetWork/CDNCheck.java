@@ -1,9 +1,10 @@
-package com.santiago.catbox.util;
+package com.santiago.catbox.util.NetWork;
 
 import android.content.Context;
 import android.util.Log;
 
 import com.santiago.catbox.common.Constant;
+import com.santiago.catbox.util.FileUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;

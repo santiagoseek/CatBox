@@ -9,4 +9,7 @@
     <string name="title_activity_qrcode">QRCodeActivity</string>
     <string name="title_activity_qrcapture">QRCaptureActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
+
+    <string name="desc">WebChat Get money</string>
+
 </resources>
