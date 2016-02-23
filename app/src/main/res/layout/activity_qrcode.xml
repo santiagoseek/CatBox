@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="OpenCamera"
+        android:textAllCaps="false"
         android:id="@+id/qrcode_bt_openCamera"/>
 
     <TextView
@@ -34,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="GenerateQR"
+        android:textAllCaps="false"
         android:id="@+id/qrcode_bt_generate"/>
 
     <ImageView

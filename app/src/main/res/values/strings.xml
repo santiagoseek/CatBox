@@ -11,5 +11,6 @@
     <string name="title_activity_splash">SplashActivity</string>
 
     <string name="desc">WebChat Get money</string>
+    <string name="title_activity_tracking">TrackingActivity</string>
 
 </resources>

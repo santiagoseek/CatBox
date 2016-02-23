@@ -62,7 +62,8 @@
         <service
             android:name=".Service.RobMoney"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
@@ -71,6 +72,11 @@
                 android:name="android.accessibilityservice"
                 android:resource="@xml/accessibility" />
         </service>
+
+        <activity
+            android:name=".activity.TrackingActivity"
+            android:label="@string/title_activity_tracking" >
+        </activity>
     </application>
 
 </manifest>

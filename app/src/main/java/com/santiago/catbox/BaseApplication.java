@@ -1,7 +1,9 @@
 package com.santiago.catbox;
 
 import android.app.Application;
+import android.content.Intent;
 
+import com.santiago.catbox.Service.RobMoney;
 import com.santiago.catbox.util.SystemInfo;
 import com.tencent.bugly.crashreport.BuglyLog;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -18,6 +20,7 @@ public class BaseApplication extends Application {
 	public void onCreate(){
 		super.onCreate();
 		initBugly();
+		this.startService(new Intent(this, RobMoney.class));
 	}
 
 	private void initBugly() {

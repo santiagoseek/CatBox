@@ -136,6 +136,10 @@ public class MainActivity extends AppCompatActivity {
 						MainActivity.this.startActivity(new Intent(MainActivity.this,QRCodeActivity.class));
 						break;
 					}
+					case 10: { //TrackingActivity
+						MainActivity.this.startActivity(new Intent(MainActivity.this,TrackingActivity.class));
+						break;
+					}
 				}
 			}
 		});
@@ -257,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
 			items.add("showNotification");
 			items.add("StorageTest");
 			items.add("QRCode");
-			items.add("DisplayInfo");
+			items.add("TrackingActivity");
 			items.add("MultiProcessServiceStart");//11
 			items.add("ServiceStop");
 			items.add("PushProcessServiceStart");

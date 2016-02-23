@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.santiago.catbox.activity.TrackingActivity">
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:id="@+id/tracking_display_et"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/linearLayoutOP"/>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="195dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayoutOP">
+        <EditText
+            android:layout_height="match_parent"
+            android:id="@+id/tracking_input_et"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="66dp"
+            android:layout_height="195dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textAllCaps="false"
+                android:id="@+id/tracking_time_bt"
+                android:background="@drawable/time6464"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textAllCaps="false"
+                android:id="@+id/tracking_location_bt"
+                android:background="@drawable/location6464"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:textAllCaps="false"
+                android:id="@+id/tracking_add_bt"
+                android:background="@drawable/add6464"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
