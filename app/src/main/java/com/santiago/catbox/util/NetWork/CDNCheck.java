@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 
 public class CDNCheck {
@@ -47,6 +48,13 @@ public class CDNCheck {
 //				Log.d(LOG_TAG, "Last CDN test is in 12h, so ignore this time.");
 //				return;
 //			}
+
+			int random = new Random().nextInt(100) + 1; // [1,100]之间的随机数
+			Log.e(LOG_TAG, String.valueOf(random));
+//			if(random > 10){
+//				LogCatUtil.d(LOG_TAG, "CDN check collecting rate is 10%. Not hit, so ignore this time.");
+//				return;
+//			}
 			new Thread(new Runnable(){
 				@Override
 				public void run() {
@@ -63,7 +71,7 @@ public class CDNCheck {
 	 */
 	public void testCDN() {
 		//String testCDNUrl = DispatcherContext.getInstance().getConfigString(Constant.CONFIG_TEST_CDN, "");
-		String testCDNUrl = "http://youimg1.c-ctrip.com/do_not_delete/pic_alpha.gif,http://pages.ctrip.com/do_not_delete/pic_alpha.gif,http://dimg02.c-ctrip.com/do_not_delete/pic_alpha.gif,http://images4.c-ctrip.com/do_not_delete/pic_alpha.gif,http://webresource.c-ctrip.com/code/testdemo/pic_alpha.gif,http://images3.c-ctrip.com/do_not_delete/pic_alpha.gif,http://dimg04.c-ctrip.com/do_not_delete/pic_alpha.gif,http://pic.ctrip.com/common/pic_alpha.gif,http://images6.c-ctrip.com/do_not_delete/pic_alpha.gif,http://pic.c-ctrip.com/common/pic_alpha.gif";
+		String testCDNUrl = "https://tecvpn.ctrip.com/,https://kyfw.12306.cn/otn/leftTicket/init,https://m.ctrip.com/html5/,http://youimg1.c-ctrip.com/do_not_delete/pic_alpha.gif,http://pages.ctrip.com/do_not_delete/pic";
 		if(testCDNUrl == null || testCDNUrl.trim().length() < 1){
 			Log.d(LOG_TAG, "Not found the remote config TEST_CDN, so CDN check break.");
 			return;

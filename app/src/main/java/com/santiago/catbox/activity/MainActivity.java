@@ -35,8 +35,9 @@ import android.widget.Toast;
 import com.santiago.catbox.NDK.TestNDK;
 import com.santiago.catbox.R;
 import com.santiago.catbox.common.Constant;
-import com.santiago.catbox.util.NetWork.ConnectionIPWeight;
 import com.santiago.catbox.util.DataStorageUtil;
+import com.santiago.catbox.util.NetWork.ConnectionIPWeight;
+import com.santiago.catbox.util.NetWork.HttpsCheck;
 import com.santiago.catbox.util.NetWork.NetworkUtil;
 import com.santiago.catbox.util.SystemInfo;
 import com.santiago.catbox.util.ToastUtil;
@@ -124,20 +125,30 @@ public class MainActivity extends AppCompatActivity {
 						break;
 					}
 					case 7: {
-						showNotification("Test","This is Testing for Notification.");
+						showNotification("Test", "This is Testing for Notification.");
 						break;
 					}
 					case 8: { //StorageTest
-						ToastUtil.showToast(context, DataStorageUtil.getInternalFilePath(context),Toast.LENGTH_LONG);
-						ToastUtil.showToast(context, DataStorageUtil.getExternalStoragePath(context),Toast.LENGTH_LONG);
+						ToastUtil.showToast(context, DataStorageUtil.getInternalFilePath(context), Toast.LENGTH_LONG);
+						ToastUtil.showToast(context, DataStorageUtil.getExternalStoragePath(context), Toast.LENGTH_LONG);
 						break;
 					}
 					case 9: { //QRCode
-						MainActivity.this.startActivity(new Intent(MainActivity.this,QRCodeActivity.class));
+						MainActivity.this.startActivity(new Intent(MainActivity.this, QRCodeActivity.class));
 						break;
 					}
 					case 10: { //TrackingActivity
-						MainActivity.this.startActivity(new Intent(MainActivity.this,TrackingActivity.class));
+						MainActivity.this.startActivity(new Intent(MainActivity.this, TrackingActivity.class));
+						break;
+					}
+					case 11: {
+						new Thread(new Runnable() {
+							@Override
+							public void run() {
+								//HttpsCheck.testUrl();
+								HttpsCheck.mainTest();
+							}
+						}).start();
 						break;
 					}
 				}
@@ -262,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
 			items.add("StorageTest");
 			items.add("QRCode");
 			items.add("TrackingActivity");
-			items.add("MultiProcessServiceStart");//11
+			items.add("HttpsCheck");//11
 			items.add("ServiceStop");
 			items.add("PushProcessServiceStart");
 			items.add("PushProcessServiceStop");
