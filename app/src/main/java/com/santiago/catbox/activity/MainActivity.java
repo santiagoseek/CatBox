@@ -1,5 +1,6 @@
 package com.santiago.catbox.activity;
 
+import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -14,6 +15,7 @@ import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +24,11 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
@@ -44,6 +49,7 @@ import com.santiago.catbox.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
 						break;
 					}
 					case 2: { //SystemInfo
+						Map<String, String> systemInfo = SystemInfo.getSystemInfo(context);
+						systemInfo.putAll(SystemInfo.getWifiNetInfo(context));
 						Dialog displayAlertDialog = new AlertDialog.Builder(context)
 								.setTitle("DisplayInfo")
 								.setMessage(SystemInfo.getSystemInfo(context).toString())
@@ -151,11 +159,73 @@ public class MainActivity extends AppCompatActivity {
 						}).start();
 						break;
 					}
+					case 12: { //TopActivity
+						Dialog displayAlertDialog = new AlertDialog.Builder(context)
+								.setTitle("TopActivity")
+								.setMessage(getTopActivity(context))
+								.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+									@Override
+									public void onClick(DialogInterface dialogInterface, int i) {
+									}
+								})
+								.create();
+						displayAlertDialog.show();
+						break;
+					}
 				}
 			}
 		});
 
 		Log.d(LOG_TAG, "onCreate has been called.");
+
+		Log.e(LOG_TAG, String.valueOf(getAcccessibilityService()));
+		//touchPath();
+
+		//this.startService(new Intent(this, TrackingTouchService.class));
+
+//		new View.OnTouchListener() {
+//			@Override
+//			public boolean onTouch(View v, MotionEvent event) {
+//				//v.getClass().getSimpleName();
+//				Log.e(LOG_TAG + "xxxOnTouchListener", v.getClass().getSimpleName());
+//				Log.e(LOG_TAG + "xxxOnTouchListener", v.getParent().getClass().getSimpleName());
+//				return false;
+//			}
+//		};
+	}
+
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev) {
+		return super.dispatchTouchEvent(ev);
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		int x = (int) event.getX();
+		int y = (int) event.getY();
+
+		String action = "";
+		switch (event.getAction()){
+			case MotionEvent.ACTION_DOWN:
+				action = "action_down";
+				break;
+			case MotionEvent.ACTION_MOVE:
+				action = "action_move";
+				break;
+			case MotionEvent.ACTION_UP:
+				action = "action_up";
+				break;
+		}
+		ToastUtil.showToast(context, action + x + "---" + y,Toast.LENGTH_LONG);
+
+		return super.onTouchEvent(event);
+	}
+
+	public void touchPath(){
+		if (((AccessibilityManager) getSystemService(Context.ACCESSIBILITY_SERVICE)).isEnabled()) {
+			AccessibilityEvent event = AccessibilityEvent.obtain(AccessibilityEvent.TYPES_ALL_MASK);
+			Log.e(LOG_TAG + "touchPath", event.getSource().getClassName().toString());
+		}
 	}
 
 	@Override
@@ -181,6 +251,32 @@ public class MainActivity extends AppCompatActivity {
 				android.os.Process.killProcess(rap.pid);
 			}
 		}
+	}
+
+	public String getTopActivity(Context context){
+		ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+		List<ActivityManager.RunningTaskInfo> runningTaskInfos = manager.getRunningTasks(1);
+
+		Log.e(LOG_TAG, runningTaskInfos.get(0).topActivity.getClassName());
+
+		if(runningTaskInfos != null){
+			return runningTaskInfos.get(0).topActivity.toString();
+		}else{
+			return null;
+		}
+	}
+
+	@TargetApi(Build.VERSION_CODES.KITKAT)
+	public boolean getAcccessibilityService(){
+		AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService(Context.ACCESSIBILITY_SERVICE);
+		Log.e(LOG_TAG, accessibilityManager.isTouchExplorationEnabled() + "----" + accessibilityManager.isEnabled());
+		return accessibilityManager.addTouchExplorationStateChangeListener(new AccessibilityManager.TouchExplorationStateChangeListener() {
+			@Override
+			public void onTouchExplorationStateChanged(boolean enabled) {
+				ToastUtil.showToast(context,"this is test",Toast.LENGTH_LONG);
+				Log.e(LOG_TAG, "addTouchExplorationStateChangeListener");
+			}
+		});
 	}
 
 	@Override
@@ -274,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
 			items.add("QRCode");
 			items.add("TrackingActivity");
 			items.add("HttpsCheck");//11
-			items.add("ServiceStop");
+			items.add("TopActivity");//12
 			items.add("PushProcessServiceStart");
 			items.add("PushProcessServiceStop");
 			items.add("ProtoBufferActivity");//15

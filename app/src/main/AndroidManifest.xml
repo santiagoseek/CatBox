@@ -15,6 +15,9 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.bind_accessibility_service" />
 
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <uses-feature android:name="android.hardware.camera" /> <!-- 使用照相机权限 -->
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -77,6 +80,12 @@
             android:name=".activity.TrackingActivity"
             android:label="@string/title_activity_tracking" >
         </activity>
+
+        <service
+            android:name=".Service.TrackingTouchService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>

@@ -1,9 +1,11 @@
 package com.santiago.catbox;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
-import android.content.Intent;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 
-import com.santiago.catbox.Service.RobMoney;
 import com.santiago.catbox.util.SystemInfo;
 import com.tencent.bugly.crashreport.BuglyLog;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -20,7 +22,9 @@ public class BaseApplication extends Application {
 	public void onCreate(){
 		super.onCreate();
 		initBugly();
-		this.startService(new Intent(this, RobMoney.class));
+		//this.startService(new Intent(this, RobMoney.class));
+		//this.startService(new Intent(this, TrackingTouchService.class));
+		addTouchListener();
 	}
 
 	private void initBugly() {
@@ -35,4 +39,19 @@ public class BaseApplication extends Application {
 
 		BuglyLog.i("SystemInfo", systemInfo.toString());
 	}
+
+
+	public void addTouchListener() {
+		new View.OnTouchListener() {
+			@SuppressLint("LongLogTag")
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				//v.getClass().getSimpleName();
+				Log.e(tag + "xxxOnTouchListener", v.getClass().getSimpleName());
+				Log.e(tag + "xxxOnTouchListener", v.getParent().getClass().getSimpleName());
+				return false;
+			}
+		};
+	}
+
 }

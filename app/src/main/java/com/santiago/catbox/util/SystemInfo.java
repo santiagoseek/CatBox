@@ -3,6 +3,7 @@ package com.santiago.catbox.util;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.DhcpInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -124,6 +125,7 @@ public class SystemInfo {
 			info.put(ANDROIDID,getAndroidID(context));
 			info.put("root",String.valueOf(RootCheck.isRoot()));
 			info.put("emu",String.valueOf(EmulatorCheck.isQEmuEnvDetected(context)));
+			info.put("localDNS",CDNCheck.getLocalDNS());
 			systemInfo = info;
 		}
 		return systemInfo;
@@ -327,5 +329,27 @@ public class SystemInfo {
 		}
 		String userAgent = String.format("%s/%s SDK/%s", appName, versionName, Constant.tempVersion);
 		return userAgent;
+	}
+
+	public static Map<String,String> getWifiNetInfo(Context context){
+		Map<String,String> wifiInfo = new HashMap<>();
+		WifiManager wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+		if(wifi  != null){
+			DhcpInfo info = wifi.getDhcpInfo();
+			wifiInfo.put("wifi-dns", intToIp(info.dns1) + ";" + intToIp(info.dns2));
+			wifiInfo.put("wifi-gateway", intToIp(info.gateway));
+			wifiInfo.put("wifi-ip", intToIp(info.ipAddress));
+			wifiInfo.put("wifi-netmask", intToIp(info.netmask));
+			wifiInfo.put("wifi-leaseTime", String.valueOf(info.leaseDuration));
+			wifiInfo.put("wifi-dhcpServer", intToIp(info.serverAddress));
+		}
+		return wifiInfo;
+	}
+
+	public static String intToIp(int addr) {
+		return  ((addr & 0xFF) + "." +
+				((addr >>>= 8) & 0xFF) + "." +
+				((addr >>>= 8) & 0xFF) + "." +
+				((addr >>>= 8) & 0xFF));
 	}
 }

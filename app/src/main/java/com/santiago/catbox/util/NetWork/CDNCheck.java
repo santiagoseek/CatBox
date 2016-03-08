@@ -70,7 +70,6 @@ public class CDNCheck {
 	 * 得到字段信息，HTTP中的remoteIP，手机端的LocalDNS，响应HEADERS中的X-VARNISH、X-Via、X-Cache字段
 	 */
 	public void testCDN() {
-		//String testCDNUrl = DispatcherContext.getInstance().getConfigString(Constant.CONFIG_TEST_CDN, "");
 		String testCDNUrl = "https://tecvpn.ctrip.com/,https://kyfw.12306.cn/otn/leftTicket/init,https://m.ctrip.com/html5/,http://youimg1.c-ctrip.com/do_not_delete/pic_alpha.gif,http://pages.ctrip.com/do_not_delete/pic";
 		if(testCDNUrl == null || testCDNUrl.trim().length() < 1){
 			Log.d(LOG_TAG, "Not found the remote config TEST_CDN, so CDN check break.");
@@ -156,14 +155,14 @@ public class CDNCheck {
 				float contentTime = (content - ttfb) / 1000000.0f;
 
 				FileUtil.writeToSDCardFile("AAATest", "testLogFile.txt", System.currentTimeMillis() + "\r\n", true);
-				String dns = "fx.ubt.mobile.cdn.dns----" + dnsTime + "----" + metricTag.toString();
-				String connect = "fx.ubt.mobile.cdn.connect----" + connectTime + "----" + metricTag.toString();
-				String ttfbStr = "fx.ubt.mobile.cdn.ttfb----" + ttfbTime + "----" + metricTag.toString();
-				String contentStr = "fx.ubt.mobile.cdn.content----" + contentTime + "----" + metricTag.toString();
+				String dns = "mobile.cdn.dns----" + dnsTime + "----" + metricTag.toString();
+				String connect = "mobile.cdn.connect----" + connectTime + "----" + metricTag.toString();
+				String ttfbStr = "mobile.cdn.ttfb----" + ttfbTime + "----" + metricTag.toString();
+				String contentStr = "mobile.cdn.content----" + contentTime + "----" + metricTag.toString();
 
 				FileUtil.writeToSDCardFile("AAATest", "testLogFile.txt", dns + "\r\n" + connect + "\r\n" + ttfbStr + "\r\n" + contentStr + "\r\n" , true);
 			} catch (Throwable t) {
-				String error = "fx.ubt.mobile.cdn.fail----" + "----" + metricTag.toString();
+				String error = "mobile.cdn.fail----" + "----" + metricTag.toString();
 				FileUtil.writeToSDCardFile("AAATest", "testLogFile.txt", error + "\r\n" , true);
 				Log.e(LOG_TAG, t.getMessage());
 			} finally {
@@ -192,7 +191,7 @@ public class CDNCheck {
 	 * 手机端的LocalDNS
 	 * @return 手机端的LocalDNS
 	 */
-	private String getLocalDNS(){
+	public static String getLocalDNS(){
 		Process cmdProcess = null;
 		BufferedReader reader = null;
 		String dnsIP = "";

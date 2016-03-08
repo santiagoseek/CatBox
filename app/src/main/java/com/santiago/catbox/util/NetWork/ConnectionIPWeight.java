@@ -35,8 +35,7 @@ public class ConnectionIPWeight {
 	}
 
 	public synchronized void refreshIPWeightByPing(){
-		String ipString = "10.2.27.88:8090,10.2.27.89:8090,10.2.27.90:8090";
-		//String ipString = "101.226.248.28:80,140.207.228.66:80,114.80.10.97:80,140.206.211.97:80";
+		String ipString = "123.125.65.82,101.71.72.151";//baidu,ctrip
 		String[] ipwithPort = ipString.split(",");
 		if(System.currentTimeMillis() - lastRefreshIPTimestamp >= 120 * 1000){
 			lastRefreshIPTimestamp = System.currentTimeMillis();

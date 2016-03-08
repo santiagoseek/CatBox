@@ -45,9 +45,16 @@ public class RobMoney extends AccessibilityService {
 		Log.e(tag,"抢红包 service connected");
 	}
 
+	public String getParentView(AccessibilityNodeInfo node){
+		return node != null ? node.getClassName() + "/" + getParentView(node.getParent()) : "";
+	}
+
 	@Override
 	public void onAccessibilityEvent(AccessibilityEvent accessibilityEvent) {
 		int eventType = accessibilityEvent.getEventType();
+
+		String path = "";
+		Log.e(tag,"click path is:" + getParentView(accessibilityEvent.getSource()));
 		switch (eventType){
 			//监听通知栏消息
 			case AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED:
@@ -88,7 +95,6 @@ public class RobMoney extends AccessibilityService {
 				}
 			}
 		}
-
 	}
 
 	@SuppressLint("NewApi")
