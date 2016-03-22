@@ -70,6 +70,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dependency-cache" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/design/22.2.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
@@ -84,14 +85,22 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 22 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="tbs_sdk_v1.5.0.1070_25434_obfs_20151125_021327" level="project" />
+    <orderEntry type="library" exported="" name="design-22.2.1" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_util_v3_7_1" level="project" />
     <orderEntry type="library" exported="" name="faceppsdk" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_radar_v3_7_1" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-22.2.1" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_search_v3_7_1" level="project" />
+    <orderEntry type="library" exported="" name="locSDK_6.23" level="project" />
+    <orderEntry type="library" exported="" name="bugly_1.2.8_release" level="project" />
+    <orderEntry type="library" exported="" name="tbs_sdk_v1.5.0.1070_25434_obfs_20151125_021327" level="project" />
     <orderEntry type="library" exported="" name="core-3.2.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.2.1" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_cloud_v3_7_1" level="project" />
     <orderEntry type="library" exported="" name="okio-1.6.0" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-22.2.1" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_map_v3_7_1" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_base_v3_7_1" level="project" />
     <orderEntry type="library" exported="" name="okhttp-3.0.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-22.2.1" level="project" />
-    <orderEntry type="library" exported="" name="bugly_1.2.8_release" level="project" />
   </component>
 </module>

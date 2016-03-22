@@ -11,9 +11,9 @@ android {
         versionCode 1
         versionName "1.0"
 
-        ndk{
+        ndk {
             moduleName "TestNDK"
-            ldLibs "log","z","m"
+            ldLibs "log", "z", "m"
             abiFilters "armeabi", "armeabi-v7a", "x86"  //输出指定三种abi体系结构下的so库。目前可有可无。
         }
 
@@ -31,13 +31,25 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('libs/faceppsdk.jar')
+    // how old app
+    compile files('libs/core-3.2.0.jar')
+    // Zxing 二维码
+    compile files('libs/bugly_1.2.8_release.jar')
+    //bugly
+    compile files('libs/tbs_sdk_v1.5.0.1070_25434_obfs_20151125_021327.jar')
+    //tencent x5 webview
+    compile files('libs/okio-1.6.0.jar')
+    compile files('libs/okhttp-3.0.1.jar')
+    //okhttp 依赖于 okio
+    compile files('libs/baidumapapi_base_v3_7_1.jar')
+    compile files('libs/baidumapapi_cloud_v3_7_1.jar')
+    compile files('libs/baidumapapi_map_v3_7_1.jar')
+    compile files('libs/baidumapapi_radar_v3_7_1.jar')
+    compile files('libs/baidumapapi_search_v3_7_1.jar')
+    compile files('libs/baidumapapi_util_v3_7_1.jar')
+    compile files('libs/locSDK_6.23.jar')
+    //baidu map
     compile 'com.android.support:appcompat-v7:22.2.1'
-
-    compile files('libs/faceppsdk.jar') // how old app
-    compile files('libs/core-3.2.0.jar') // Zxing 二维码
-    compile files('libs/bugly_1.2.8_release.jar') //bugly
-    compile files('libs/tbs_sdk_v1.5.0.1070_25434_obfs_20151125_021327.jar') //tencent x5 webview
-
-    compile files('libs/okio-1.6.0.jar');
-    compile files('libs/okhttp-3.0.1.jar'); //okhttp 依赖于 okio
+    compile 'com.android.support:design:22.2.1'
 }

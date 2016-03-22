@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.santiago.catbox.util.SystemInfo;
 import com.tencent.bugly.crashreport.BuglyLog;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -19,12 +20,16 @@ import java.util.Map;
 public class BaseApplication extends Application {
 	final String tag = "CatBoxBaseApplication";
 
+
+
 	public void onCreate(){
 		super.onCreate();
 		initBugly();
 		//this.startService(new Intent(this, RobMoney.class));
 		//this.startService(new Intent(this, TrackingTouchService.class));
 		addTouchListener();
+
+		SDKInitializer.initialize(getApplicationContext()); //baidu map sdk init
 	}
 
 	private void initBugly() {

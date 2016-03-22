@@ -18,7 +18,6 @@ import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -37,10 +36,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.santiago.catbox.Component.SimpleDialog;
 import com.santiago.catbox.NDK.TestNDK;
 import com.santiago.catbox.R;
 import com.santiago.catbox.common.Constant;
 import com.santiago.catbox.util.DataStorageUtil;
+import com.santiago.catbox.util.Map.BaiduMapLocationUtils;
 import com.santiago.catbox.util.NetWork.ConnectionIPWeight;
 import com.santiago.catbox.util.NetWork.HttpsCheck;
 import com.santiago.catbox.util.NetWork.NetworkUtil;
@@ -51,7 +52,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 	private String LOG_TAG = Constant.TAG + "-" + MainActivity.class.getSimpleName();
 	private ListViewAdapter listViewAdapter;
@@ -94,8 +95,10 @@ public class MainActivity extends AppCompatActivity {
 
 						break;
 					}
-					case 1: {
-						Toast.makeText(context, ConnectionIPWeight.getInstance().getIPWeight().toString(), Toast.LENGTH_LONG).show();
+					case 1: {  //test
+						String testString = BaiduMapLocationUtils.getInstance(context).getLocationAddress();
+						//String testString = ConnectionIPWeight.getInstance().getIPWeight().toString();
+						Toast.makeText(context, testString, Toast.LENGTH_LONG).show();
 						break;
 					}
 					case 2: { //SystemInfo
@@ -160,17 +163,41 @@ public class MainActivity extends AppCompatActivity {
 						break;
 					}
 					case 12: { //TopActivity
-						Dialog displayAlertDialog = new AlertDialog.Builder(context)
-								.setTitle("TopActivity")
+//						Dialog displayAlertDialog = new AlertDialog.Builder(context)
+//								.setTitle("TopActivity")
+//								.setMessage(getTopActivity(context))
+//								.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//									@Override
+//									public void onClick(DialogInterface dialogInterface, int i) {
+//									}
+//								})
+//								.create();
+//						displayAlertDialog.show();
+
+						SimpleDialog displayDialog = new SimpleDialog.Builder(context)
+								.setTitle("提示")
 								.setMessage(getTopActivity(context))
-								.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+								.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 									@Override
-									public void onClick(DialogInterface dialogInterface, int i) {
+									public void onClick(DialogInterface dialog, int which) {
+										dialog.dismiss();
+									}
+								})
+								.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										dialog.dismiss();
 									}
 								})
 								.create();
-						displayAlertDialog.show();
+						displayDialog.show();
 						break;
+					}
+					case 13:{
+						MainActivity.this.startActivity(new Intent(MainActivity.this,MapActivity.class));
+					}
+					case 14:{
+						MainActivity.this.startActivity(new Intent(MainActivity.this,TestActivity.class));
 					}
 				}
 			}
@@ -178,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
 		Log.d(LOG_TAG, "onCreate has been called.");
 
-		Log.e(LOG_TAG, String.valueOf(getAcccessibilityService()));
+		//Log.e(LOG_TAG, String.valueOf(getAcccessibilityService()));
 		//touchPath();
 
 		//this.startService(new Intent(this, TrackingTouchService.class));
@@ -198,6 +225,11 @@ public class MainActivity extends AppCompatActivity {
 	public boolean dispatchTouchEvent(MotionEvent ev) {
 		return super.dispatchTouchEvent(ev);
 	}
+
+//	@Override
+//	public boolean onInterceptTouchEvent(MotionEvent ev) {
+//		return super.onInterceptTouchEvent(ev);
+//	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -371,8 +403,8 @@ public class MainActivity extends AppCompatActivity {
 			items.add("TrackingActivity");
 			items.add("HttpsCheck");//11
 			items.add("TopActivity");//12
-			items.add("PushProcessServiceStart");
-			items.add("PushProcessServiceStop");
+			items.add("BaiduMap");//13
+			items.add("testActivity");
 			items.add("ProtoBufferActivity");//15
 			items.add("UBTFvtTest");
 
