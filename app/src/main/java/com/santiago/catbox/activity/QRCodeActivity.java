@@ -1,10 +1,10 @@
 package com.santiago.catbox.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +20,7 @@ import com.santiago.catbox.util.ToastUtil;
 
 import java.io.UnsupportedEncodingException;
 
-public class QRCodeActivity extends AppCompatActivity {
+public class QRCodeActivity extends Activity {
 
 	private TextView resultTextView;
 	private EditText qrStrEditText;

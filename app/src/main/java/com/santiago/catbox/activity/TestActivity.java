@@ -31,4 +31,17 @@ public class TestActivity extends AppCompatActivity {
 		Log.e("testActivity","this is test");
 	}
 
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
 }

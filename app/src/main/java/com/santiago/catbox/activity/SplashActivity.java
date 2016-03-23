@@ -43,7 +43,7 @@ public class SplashActivity extends Activity {
 				SplashActivity.this.startActivity(new Intent(SplashActivity.this, MainActivity.class));
 				SplashActivity.this.finish();
 			}
-		},3000);
+		},1000);
 	}
 
 	@Override

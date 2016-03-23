@@ -92,7 +92,6 @@ public class MainActivity extends BaseActivity {
 						} else {
 							Toast.makeText(context, "No Network Access.", Toast.LENGTH_LONG).show();
 						}
-
 						break;
 					}
 					case 1: {  //test
@@ -195,9 +194,11 @@ public class MainActivity extends BaseActivity {
 					}
 					case 13:{
 						MainActivity.this.startActivity(new Intent(MainActivity.this,MapActivity.class));
+						break;
 					}
 					case 14:{
 						MainActivity.this.startActivity(new Intent(MainActivity.this,TestActivity.class));
+						break;
 					}
 				}
 			}

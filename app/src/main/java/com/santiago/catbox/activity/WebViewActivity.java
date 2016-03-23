@@ -1,9 +1,9 @@
 package com.santiago.catbox.activity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -17,7 +17,7 @@ import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
-public class WebViewActivity extends AppCompatActivity {
+public class WebViewActivity extends Activity {
 
 	private WebView webView;
 	private String tag = Constant.TAG + "-" + WebViewActivity.class.getSimpleName();

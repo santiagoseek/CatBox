@@ -2,7 +2,6 @@ package com.santiago.catbox.activity;
 
 import android.database.ContentObserver;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 
@@ -17,7 +16,7 @@ public class BaseActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		mObserver = new ScreenShotObserver(this,new Handler());
+		mObserver = new ScreenShotObserver(this);
 	}
 
 	@Override

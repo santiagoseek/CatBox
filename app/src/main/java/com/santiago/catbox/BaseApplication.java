@@ -57,6 +57,6 @@ public class BaseApplication extends Application {
 				return false;
 			}
 		};
-	}
 
+	}
 }

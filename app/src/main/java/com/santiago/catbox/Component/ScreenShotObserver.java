@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -21,16 +23,17 @@ import java.io.File;
 public class ScreenShotObserver extends ContentObserver {
 	private Context mContext;
 	private Handler mHandler;
+	private ScreenShotDialog mDialog;
 	/**
 	 * Creates a content observer.
 	 *
 	 * @param handler The handler to run {@link #onChange} on, or null if none.
 	 */
-	public ScreenShotObserver(Context context, Handler handler) {
-		super(handler);
+	public ScreenShotObserver(Context context) {
+		super(null);
 
 		mContext = context;
-		mHandler = handler;
+		mHandler = new Handler();
 	}
 
 	@Override
@@ -78,15 +81,28 @@ public class ScreenShotObserver extends ContentObserver {
 		mHandler.post(new Runnable() {
 			@Override
 			public void run() {
-				simpleDialog(fileP);
+				//simpleDialog(fileP);
+				showDialog(fileP);
 			}
 		});
 	}
 
-//	private void showDialog(String filePath){
-//		Bitmap bitmap = null;
-//		if()
-//	}
+	private void showDialog(String filePath){
+		Bitmap bitmap = null;
+		try{
+			if(mDialog != null && mDialog.isShowing()){
+				return;
+			}
+			bitmap = BitmapFactory.decodeFile(filePath);
+
+			mDialog = new ScreenShotDialog(mContext,filePath);
+			mDialog.setmBitmap(bitmap);
+			mDialog.show();
+		}catch (Exception e){
+			e.printStackTrace();
+			Log.e("ScreenShotObserver",e.getMessage());
+		}
+	}
 
 	private void simpleDialog(String filePath){
 		AlertDialog alertDialog = new AlertDialog.Builder(mContext).setTitle("filePath")

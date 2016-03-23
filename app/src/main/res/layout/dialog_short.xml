@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="190dp">
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="136dp"
+        android:layout_gravity="right"
+        android:layout_marginBottom="54dp"
+        android:layout_marginRight="10dp"
+        >
+
+        <FrameLayout
+            android:layout_width="110dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="40dp"
+            android:clipChildren="false">
+
+            <ImageView
+                android:id="@+id/shot_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/common_shot_bg"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="79dp"
+            android:layout_height="136dp"
+            android:layout_gravity="right"
+            android:background="@drawable/common_screenshot_pop_bg"
+            android:padding="2dp">
+
+            <ImageView
+                android:id="@+id/iv_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:background="#cc000000"
+                    android:gravity="center"
+                    android:text="反馈"
+                    android:textColor="@android:color/white"
+                    android:textSize="14dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/white"/>
+
+                <TextView
+                    android:id="@+id/tv_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:background="#cc000000"
+                    android:gravity="center"
+                    android:text="分享"
+                    android:textColor="@android:color/white"
+                    android:textSize="14dp"/>
+            </LinearLayout>
+        </FrameLayout>
+
+    </FrameLayout>
+
+</FrameLayout>
