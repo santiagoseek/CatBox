@@ -42,27 +42,28 @@ public class WebViewActivity extends Activity {
 		webView.setDownloadListener(new DownloadListener() {
 			@Override
 			public void onDownloadStart(String s, String s1, String s2, String s3, long l) {
-				Log.d(tag,"begin to download, url is " + s);
+				Log.d(tag, "begin to download, url is " + s);
 				new Thread(new DownloadFile(s)).start();
 			}
 		});
 
-		webView.setWebViewClient(new WebViewClient(){
+		webView.setWebViewClient(new WebViewClient() {
 			@Override
-			public boolean shouldOverrideUrlLoading(WebView view, String url){
+			public boolean shouldOverrideUrlLoading(WebView view, String url) {
 				view.loadUrl(url);
 				return true;
 			}
 
-			public void onPageStarted(WebView view, String url, Bitmap favicon){
+			public void onPageStarted(WebView view, String url, Bitmap favicon) {
 				super.onPageStarted(view, url, favicon);
 			}
 
-			public void onPageFinished(WebView view, String url){
-				super.onPageFinished(view,url);
+			public void onPageFinished(WebView view, String url) {
+				super.onPageFinished(view, url);
 				progressDialog.dismiss();
 			}
 		});
+		Log.d(tag, "onCreate has been called.");
 	}
 
 	@Override
@@ -94,5 +95,41 @@ public class WebViewActivity extends Activity {
 		}else{
 			return super.onKeyDown(keyCoder,event);
 		}
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		Log.d(tag, "onStart has been called.");
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		Log.d(tag, "onPause has been called.");
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		Log.d(tag, "onStop has been called.");
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		Log.d(tag, "onDestroy has been called.");
+	}
+
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		Log.d(tag, "onRestart has been called.");
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Log.d(tag, "onResume has been called.");
 	}
 }

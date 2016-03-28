@@ -272,7 +272,7 @@ public class MainActivity extends BaseActivity {
 		unregisterReceiver(networkChangedReceiver);
 		super.onDestroy();
 		killProcesser();
-		Log.e(LOG_TAG, "onDestroy has been called");
+		Log.d(LOG_TAG, "onDestroy has been called");
 	}
 
 	private void killProcesser() {
